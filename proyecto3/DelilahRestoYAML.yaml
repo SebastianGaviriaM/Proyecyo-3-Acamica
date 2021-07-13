@@ -1,0 +1,391 @@
+swagger: "2.0"
+info:
+  description: "Documentación API DelilahResto"
+  version: "1.0.0"
+  title: "Compaventa Vehiculos"
+  contact:
+    email: "seabstiangaviriamontoya@gmail.com"
+host: "localhost:3000"
+basePath: "/api"
+tags: 
+- name: "Usuarios"
+  description: "Operaciones CRUD para usuarios"
+- name: "Productos"
+  description: "Operaciones CRUD para productos"
+- name: "Pedidos"
+  description: "Operaciones CRUD para pedidos"
+  
+  
+  
+  
+paths:
+
+  /login:
+    post:
+      tags:
+        - "Usuarios"
+      summary: Loguear un usuario
+      description: "Loguear un usuario en la plataforma"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: Objeto para loguear un usuario
+          required: true
+          schema: 
+            $ref: "#/definitions/UsuariosLogin"
+      responses:
+        200: 
+          description: Ok
+        405:
+          description: Hubo algún problema con la creación del usuario
+      
+
+
+  /usuarios: 
+    get: 
+      tags: 
+        - "Usuarios"
+      summary: Traer todos los usuarios registrados en el sistema
+      description: "Traer todos los usuarios registrados a la fecha"
+      responses:
+        200:
+          description: Ok
+          schema: 
+            type: "array"
+            items: 
+              $ref: "#/definitions/UsuariosGET"
+        400:
+          description: No eres admin, no puedes ingresar a es informacion 
+    post:
+      tags:
+        - "Usuarios"
+      summary: Registrar usuario nuevo
+      description: Registrar un usuario nuevo en la plataforma
+      parameters:
+        - in: "body"
+          name: "body"
+          description: Objeto para crear un usuario
+          required: true
+          schema: 
+            $ref: "#/definitions/Usuarios"
+      responses:
+        200: 
+          description: Ok
+        405:
+          description: Hubo algún problema con la creación del usuario
+
+          
+  /Usuarios/{id}:
+    put:
+      tags:
+        - "Usuarios"
+      summary: Actualizar usuario
+      description: Actualizar todos los datos de un usuario
+      parameters:
+        - in: "body"
+          name: "body"
+          description: Objeto para crear vehiculo
+          required: true
+          schema: 
+            $ref: "#/definitions/Usuarios"
+        - name: "id"
+          in: "path"
+          description: "id del Usuario a actializar"
+          required: true
+          type: "number"
+      responses:
+        200: 
+          description: Ok
+        405:
+          description: No se pudo actualizar el usuario
+          
+    delete:
+      tags:
+        - "Usuarios"
+      summary: Eliminar usuario seleccionado
+      description: Eliminar un usuaro del sistema
+      parameters: 
+        - name: "id"
+          in: "path"
+          description: "id del Usuario a eliminar"
+          required: true
+          type: "number"
+          
+      responses:
+        200: 
+          description: Ok
+        405:
+          description: No se pudo actualizar el usuario
+
+  /productos: 
+    get: 
+      tags: 
+        - "Productos"
+      summary: Traer todos los productos disponibles
+      description: "Traer todos los productos disponibles en el momento"
+      responses:
+        200:
+          description: Ok
+          schema: 
+            type: "array"
+            items: 
+              $ref: "#/definitions/ProductosGET"
+        400:
+          description: No eres admin, no puedes ingresar a es informacion 
+    post:
+      tags:
+        - "Productos"
+      summary: Registrar producto nuevo
+      description: Registrar un producto nuevo en la plataforma
+      parameters:
+        - in: "body"
+          name: "body"
+          description: Objeto para crear un producto
+          required: true
+          schema: 
+            $ref: "#/definitions/Productos"
+      responses:
+        200: 
+          description: Ok
+        405:
+          description: Hubo algún problema con la creación del producto
+
+          
+  /productos/{id}:
+    put:
+      tags:
+        - "Productos"
+      summary: Actualizar producto
+      description: Actualizar todos los datos de un producto
+      parameters:
+        - in: "body"
+          name: "body"
+          description: Objeto para crear producto
+          required: true
+          schema: 
+            $ref: "#/definitions/Productos"
+        - name: "id"
+          in: "path"
+          description: "id del producto a actializar"
+          required: true
+          type: "number"
+      responses:
+        200: 
+          description: Ok
+        405:
+          description: No se pudo actualizar el producto
+          
+    delete:
+      tags:
+        - "Productos"
+      summary: Eliminar producto seleccionado
+      description: Eliminar un producto del sistema
+      parameters: 
+        - name: "id"
+          in: "path"
+          description: "id del producto a eliminar"
+          required: true
+          type: "number"
+          
+      responses:
+        200: 
+          description: Ok
+        405:
+          description: No se pudo actualizar el producto
+          
+          
+  /pedidos: 
+    get: 
+      tags: 
+        - "Pedidos"
+      summary: Traer todos los pedidos en curso
+      description: "Traer todos los pedidos que están en curso"
+      responses:
+        200:
+          description: Ok
+          schema: 
+            type: "array"
+            items: 
+              $ref: "#/definitions/PedidosGET"
+        400:
+          description: No se pudo traer la información 
+    post:
+      tags:
+        - "Pedidos"
+      summary: Crear pedido nuevo
+      description: Crear un nuevo pedido a la plataforma
+      parameters:
+        - in: "body"
+          name: "body"
+          description: Objeto para crear un pedido
+          required: true
+          schema: 
+            $ref: "#/definitions/Pedidos"
+      responses:
+        200: 
+          description: Ok
+        405:
+          description: Hubo algún problema con la creación del pedido
+
+          
+  /pedidos/{id}:
+    put:
+      tags:
+        - "Pedidos"
+      summary: Actualizar pedido
+      description: Actualizar todos los datos de un producto
+      parameters:
+        - in: "body"
+          name: "body"
+          description: Objeto para crear producto
+          required: true
+          schema: 
+            $ref: "#/definitions/PedidosAct"
+        - name: "id"
+          in: "path"
+          description: "id del producto a actializar"
+          required: true
+          type: "number"
+      responses:
+        200: 
+          description: Ok
+        405:
+          description: Debes ser administrador para poder editar el estado de un pedido
+          
+    delete:
+      tags:
+        - "Pedidos"
+      summary: Eliminar pedido seleccionado
+      description: Eliminar un pedido del sistema
+      parameters: 
+        - name: "id"
+          in: "path"
+          description: "id del pedido a eliminar"
+          required: true
+          type: "number"
+          
+      responses:
+        200: 
+          description: Ok
+        405:
+          description: No eres admin, no puedes ingresar a es informacion
+        
+        
+        
+definitions: 
+
+  UsuariosLogin:
+    type: "object"
+    properties:
+      nombreUsuario:
+        type: "string"
+      contrasena: 
+        type: "string"
+        
+
+  UsuariosGET:
+    type: "object"
+    properties:
+      nombreUsuario:
+        type: "string"
+      nombreYApellido:
+        type: "string"
+      email:
+        type: "string"
+      telefono:
+        type: "integer"
+        format: "int64"
+      direccion:
+        type: "string"
+      esAdmin: 
+        type: "boolean"
+        
+  Usuarios:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      nombreUsuario:
+        type: "string"
+      nombreYApellido:
+        type: "string"
+      email:
+        type: "string"
+      telefono:
+        type: "integer"
+        format: "int64"
+      direccion:
+        type: "string"
+      contrasena:
+        type: "string"
+      esAdmin: 
+        type: "boolean"
+        
+  ProductosGET:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      nombre:
+        type: "string"
+      foto:
+        type: "string"
+      precio:
+        type: "string"
+        
+  Productos:
+    type: "object"
+    properties:
+      nombre:
+        type: "string"
+      foto:
+        type: "string"
+      precio:
+        type: "string"
+        
+  PedidosGET:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      estado:
+        type: "string"
+      formaPago: 
+        type: "string"
+      nombreUsuario: 
+        type: "string"
+      direccion: 
+        type: "string"
+      listaProductos: 
+        type: "array"
+        items:
+          $ref: "#/definitions/Productos"
+          
+  Pedidos:
+    type: "object"
+    properties: 
+      productos:
+        type: "array"
+        items:
+          type: "integer"
+        
+      formaPago: 
+        type: "string"
+  
+  PedidosAct:
+    type: "object"
+    properties:
+      estado: 
+        type: "string"
+      
+      
+      
+      
+      
+      
+    
+  
+          
