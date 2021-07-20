@@ -38,24 +38,8 @@ paths:
           description: Ok
         405:
           description: Hubo algún problema con la creación del usuario
-      
-
-
-  /usuarios: 
-    get: 
-      tags: 
-        - "Usuarios"
-      summary: Traer todos los usuarios registrados en el sistema
-      description: "Traer todos los usuarios registrados a la fecha"
-      responses:
-        200:
-          description: Ok
-          schema: 
-            type: "array"
-            items: 
-              $ref: "#/definitions/UsuariosGET"
-        400:
-          description: No eres admin, no puedes ingresar a es informacion 
+          
+  /registro:
     post:
       tags:
         - "Usuarios"
@@ -74,6 +58,25 @@ paths:
         405:
           description: Hubo algún problema con la creación del usuario
 
+
+  /usuarios: 
+    get: 
+      tags: 
+        - "Usuarios"
+      summary: Traer todos los usuarios registrados en el sistema
+      description: "Traer todos los usuarios registrados a la fecha"
+      responses:
+        200:
+          description: Ok
+          schema: 
+            type: "array"
+            items: 
+              $ref: "#/definitions/UsuariosGET"
+        400:
+          description: No eres admin, no puedes ingresar a es informacion 
+          
+
+
           
   /Usuarios/{id}:
     put:
@@ -87,7 +90,7 @@ paths:
           description: Objeto para crear vehiculo
           required: true
           schema: 
-            $ref: "#/definitions/Usuarios"
+            $ref: "#/definitions/UsuariosPUT"
         - name: "id"
           in: "path"
           description: "id del Usuario a actializar"
@@ -286,6 +289,9 @@ definitions:
   UsuariosGET:
     type: "object"
     properties:
+      id:
+        type: "integer"
+        format: "int64"
       nombreUsuario:
         type: "string"
       nombreYApellido:
@@ -303,9 +309,6 @@ definitions:
   Usuarios:
     type: "object"
     properties:
-      id:
-        type: "integer"
-        format: "int64"
       nombreUsuario:
         type: "string"
       nombreYApellido:
@@ -319,8 +322,21 @@ definitions:
         type: "string"
       contrasena:
         type: "string"
-      esAdmin: 
-        type: "boolean"
+        
+  UsuariosPUT:
+    type: "object"
+    properties:
+      nombreUsuario:
+        type: "string"
+      nombreYApellido:
+        type: "string"
+      email:
+        type: "string"
+      telefono:
+        type: "integer"
+        format: "int64"
+      direccion:
+        type: "string"
         
   ProductosGET:
     type: "object"
