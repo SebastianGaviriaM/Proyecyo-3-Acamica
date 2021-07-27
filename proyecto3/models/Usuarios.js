@@ -13,10 +13,10 @@ Usuario.obtenerTodos = async() =>{
     
 };
 
-Usuario.crear = async(nickname, nombre, email, telefono, direccion, passwordhash) => {
+Usuario.crear = async(nombreUsuario, nombreYApellido, email, telefono, direccion, passwordhash, esAdmin) => {
     try {
-        const result = await sequelize.query('INSERT INTO usuario (nombreUsuario, nombreYApellido, email, telefono, direccion, contrasena, esAdmin) VALUES (?, ?, ?, ?, ?, ?, false);', {
-            replacements: [nickname, nombre, email, telefono, direccion, passwordhash]
+        const result = await sequelize.query('INSERT INTO usuario (nombreUsuario, nombreYApellido, email, telefono, direccion, contrasena, esAdmin) VALUES (?, ?, ?, ?, ?, ?, ?);', {
+            replacements: [nombreUsuario, nombreYApellido, email, telefono, direccion, passwordhash, esAdmin]
         });
         return result;
         

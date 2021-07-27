@@ -75,10 +75,6 @@ paths:
         400:
           description: No eres admin, no puedes ingresar a es informacion 
           
-
-
-          
-  /Usuarios/{id}:
     put:
       tags:
         - "Usuarios"
@@ -91,11 +87,13 @@ paths:
           required: true
           schema: 
             $ref: "#/definitions/UsuariosPUT"
-        - name: "id"
-          in: "path"
+            
+        - in: "query"
+          name: "params"
           description: "id del Usuario a actializar"
           required: true
-          type: "number"
+          type: "integer"
+          
       responses:
         200: 
           description: Ok
@@ -108,8 +106,8 @@ paths:
       summary: Eliminar usuario seleccionado
       description: Eliminar un usuaro del sistema
       parameters: 
-        - name: "id"
-          in: "path"
+        - in: "query"
+          name: "params"
           description: "id del Usuario a eliminar"
           required: true
           type: "number"
@@ -153,8 +151,6 @@ paths:
         405:
           description: Hubo algún problema con la creación del producto
 
-          
-  /productos/{id}:
     put:
       tags:
         - "Productos"
@@ -167,11 +163,13 @@ paths:
           required: true
           schema: 
             $ref: "#/definitions/Productos"
-        - name: "id"
-          in: "path"
-          description: "id del producto a actializar"
+            
+        - in: "query"
+          name: "params"
+          description: "id del producto a actualizar"
           required: true
-          type: "number"
+          type: "number"  
+          
       responses:
         200: 
           description: Ok
@@ -184,8 +182,8 @@ paths:
       summary: Eliminar producto seleccionado
       description: Eliminar un producto del sistema
       parameters: 
-        - name: "id"
-          in: "path"
+        - in: "query"
+          name: "params"
           description: "id del producto a eliminar"
           required: true
           type: "number"
@@ -230,8 +228,6 @@ paths:
         405:
           description: Hubo algún problema con la creación del pedido
 
-          
-  /pedidos/{id}:
     put:
       tags:
         - "Pedidos"
@@ -244,9 +240,9 @@ paths:
           required: true
           schema: 
             $ref: "#/definitions/PedidosAct"
-        - name: "id"
-          in: "path"
-          description: "id del producto a actializar"
+        - in: "query"
+          name: "params"
+          description: "id del producto a eliminar"
           required: true
           type: "number"
       responses:
@@ -261,9 +257,9 @@ paths:
       summary: Eliminar pedido seleccionado
       description: Eliminar un pedido del sistema
       parameters: 
-        - name: "id"
-          in: "path"
-          description: "id del pedido a eliminar"
+        - in: "query"
+          name: "params"
+          description: "id del producto a eliminar"
           required: true
           type: "number"
           
@@ -326,6 +322,9 @@ definitions:
   UsuariosPUT:
     type: "object"
     properties:
+      id:
+        type: "integer"
+        format: "int64"
       nombreUsuario:
         type: "string"
       nombreYApellido:
@@ -337,6 +336,7 @@ definitions:
         format: "int64"
       direccion:
         type: "string"
+
         
   ProductosGET:
     type: "object"
@@ -396,8 +396,7 @@ definitions:
     properties:
       estado: 
         type: "string"
-      
-      
+
       
       
       

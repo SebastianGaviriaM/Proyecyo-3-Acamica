@@ -3,7 +3,7 @@ let midUsuario = {}
 
 midUsuario.crear =  (req, res, next)=>{
     const usuario = req.body;
-    if(!usuario.nickname || !usuario.contrasena || !usuario.email){
+    if(!usuario.nombreUsuario || !usuario.contrasena || !usuario.email){
         res.send('Debes ingresar nombre de usuario, contrasena y email para crear un nuevo usuario');
     }else{
         next(); 
@@ -15,7 +15,7 @@ midUsuario.nombres = async(req, res, next)=>{
     let existeUsuario = false;
     for (let index = 0; index < result.length; index++) {
         const element = result[index];
-        if(element.nombreUsuario == req.body.nickname){
+        if(element.nombreUsuario == req.body.nombreUsuario){
             existeUsuario = true;
         }
     };

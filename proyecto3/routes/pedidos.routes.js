@@ -31,8 +31,8 @@ router.route('/')
         });
     })
 
-    .put(validarAdmin, async(req, res)=>{         //Middleware solo admin
-        const id = req.query.id;
+    .put(validarAdmin, async(req, res)=>{        //Middleware solo admin
+        const id = req.quety.id;
         const {estado} = req.body;
         const result = await Pedido.actualizar(id, estado);
         res.json({

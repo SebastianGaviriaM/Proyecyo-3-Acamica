@@ -25,9 +25,9 @@ router.route('/login')
 
 router.route('/registro')    
     .post(mdlwrUsuario.crear, mdlwrUsuario.nombres, mdlwrUsuario.email, async(req, res)=>{
-        const {nickname, nombre, email, telefono, direccion, contrasena} = req.body;
+        const {nombreUsuario, nombreYApellido, email, telefono, direccion, contrasena, esAdmin} = req.body;
         const passwordhash = bcrypt.hashSync(contrasena, parseInt(process.env.bcrypttmes));
-        Usuario.crear(nickname, nombre, email, telefono, direccion, passwordhash);
+        Usuario.crear(nombreUsuario, nombreYApellido, email, telefono, direccion, passwordhash, esAdmin);
 
         res.status(204).end();
     });
