@@ -28,7 +28,7 @@ Los valores de los estados de los pedidos solamente pueden ser: 'NUEVO', 'CONFIR
 Los valores de las formas de pago de los pedidos solamente pueden ser: 'TARJETA', 'EFECTIVO', en mayúscula.
 Cualquier otro valor ingresado en estos dos campos resultarán en un error arrojado por base de datos.
 
-Lea las indicaciones dadas en el archivo DelilahResto.YAML 
+Lea las indicaciones dadas en el archivo delilhaResto.YAML 
 
 
 

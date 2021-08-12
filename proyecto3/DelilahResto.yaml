@@ -318,6 +318,8 @@ definitions:
         type: "string"
       contrasena:
         type: "string"
+      esAdmin:
+        type: "boolean"
         
   UsuariosPUT:
     type: "object"
